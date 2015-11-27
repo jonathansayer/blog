@@ -7,4 +7,11 @@ feature 'viewing blog entries' do
       expect(page).to have_content "No Blog Articles Available"
     end
   end
+
+  scenario 'an entry cannot be made unless singed in' do
+    visit '/articles_new'
+    fill_in('Email',with: "test@test.com")
+    fill_in('Password',with: 'testtest')
+    expect(page).to have_button "Create New Article"
+  end
 end
