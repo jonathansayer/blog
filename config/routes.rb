@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   get 'articles' => 'articles#index'
   get 'articles_new' => 'articles#new'
   root 'articles#index'
