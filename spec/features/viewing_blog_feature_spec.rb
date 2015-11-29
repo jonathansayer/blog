@@ -12,7 +12,8 @@ feature 'viewing blog entries' do
     visit '/admins/sign_up'
     fill_in('Email',with: "test@test.com")
     fill_in('Password',with: 'testtest')
-    fill_in('Password', with:'testtest')
+    fill_in('Password confirmation', with:'testtest')
+    click_button "Sign up"
     expect(page).to have_button "Create New Article"
   end
 end
