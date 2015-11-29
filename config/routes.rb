@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :admins
   get 'articles' => 'articles#index'
-  get 'articles_new' => 'articles#new'
+  post 'articles_new' => 'articles#new'
+  get 'articles_create' => 'articles#create'
   root 'articles#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
