@@ -9,9 +9,10 @@ feature 'viewing blog entries' do
   end
 
   scenario 'an entry cannot be made unless singed in' do
-    visit '/articles_new'
+    visit '/admins/sign_up'
     fill_in('Email',with: "test@test.com")
     fill_in('Password',with: 'testtest')
+    fill_in('Password', with:'testtest')
     expect(page).to have_button "Create New Article"
   end
 end
