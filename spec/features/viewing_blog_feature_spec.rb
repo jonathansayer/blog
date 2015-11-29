@@ -8,12 +8,19 @@ feature 'viewing blog entries' do
     end
   end
 
-  scenario 'an entry cannot be made unless singed in' do
-    visit '/admins/sign_up'
-    fill_in('Email',with: "test@test.com")
-    fill_in('Password',with: 'testtest')
-    fill_in('Password confirmation', with:'testtest')
-    click_button "Sign up"
-    expect(page).to have_button "Create New Article"
+  context 'an entry cannot be made unless signed in' do
+    scenario 'not signed in' do
+      visit '/'
+      expect(page).to_not have_button "Create New Article"
+    end
+    
+    scenario 'signing in' do
+      visit '/admins/sign_up'
+      fill_in('Email',with: "test@test.com")
+      fill_in('Password',with: 'testtest')
+      fill_in('Password confirmation', with:'testtest')
+      click_button "Sign up"
+      expect(page).to have_button "Create New Article"
+    end
   end
 end
