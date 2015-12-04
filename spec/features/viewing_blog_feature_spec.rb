@@ -33,7 +33,8 @@ feature 'viewing blog entries' do
       click_button "Sign up"
       expect(page).to_not have_css("input")
       click_button "Create New Article"
+      p page.path
       expect(page).to have_css("input")
     end
-  end 
+  end
 end
