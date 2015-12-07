@@ -31,9 +31,10 @@ feature 'viewing blog entries' do
       fill_in('Password',with: 'testtest')
       fill_in('Password confirmation', with:'testtest')
       click_button "Sign up"
-      expect(page).to_not have_css("text")
+      expect(page).to_not have_css("textarea")
       click_button "Create New Article"
-      expect(page).to have_css("input")
+      p current_path
+      expect(page).to have_css("textarea")
     end
   end
 end
