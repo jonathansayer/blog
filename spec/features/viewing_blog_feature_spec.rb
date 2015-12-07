@@ -31,9 +31,25 @@ feature 'viewing blog entries' do
       fill_in('Password',with: 'testtest')
       fill_in('Password confirmation', with:'testtest')
       click_button "Sign up"
+      expect(current_path).to eq '/'
       expect(page).to_not have_css("textarea")
       click_button "Create New Article"
+      expect(current_path).to eq '/articles_create'
       expect(page).to have_css("textarea")
     end
+
+    scenario 'saving an entry' do
+      visit '/admins/sign_up'
+      fill_in('Email',with: "test@test.com")
+      fill_in('Password',with: 'testtest')
+      fill_in('Password confirmation', with:'testtest')
+      click_button "Sign up"
+      click_button "Create New Article"
+      fill_in('article', with: 'This is an Article')
+      click_button 'Save Article'
+      articles = Article.all
+      expect(article.count).to eq 1
+    end
+
   end
 end
