@@ -10,4 +10,11 @@ class ArticlesController < ApplicationController
   def create
   end
 
+  def save
+    redirect_to articles_publish_path
+  end
+
+  def publish
+  end
+
 end

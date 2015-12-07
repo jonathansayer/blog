@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'articles' => 'articles#index'
   post 'articles_new' => 'articles#new'
   get 'articles_create' => 'articles#create'
+  post 'articles_save' => 'articles#save'
+  get 'articles_publish' => 'articles#publish'
   root to:'articles#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
