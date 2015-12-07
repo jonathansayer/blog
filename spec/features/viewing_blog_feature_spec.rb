@@ -33,7 +33,6 @@ feature 'viewing blog entries' do
       click_button "Sign up"
       expect(page).to_not have_css("textarea")
       click_button "Create New Article"
-      p current_path
       expect(page).to have_css("textarea")
     end
   end
