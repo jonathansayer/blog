@@ -63,7 +63,7 @@ feature 'viewing blog entries' do
       fill_in('article_body', with: 'This is an Article')
       click_button 'Save Article'
       click_button "Publish Article"
-      expect(page).to have_content "'This is an Article"
+      expect(page).to have_content "This is an Article"
     end
   end
 end

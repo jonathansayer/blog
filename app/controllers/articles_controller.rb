@@ -17,6 +17,11 @@ class ArticlesController < ApplicationController
   end
 
   def publish
+    @articles = Article.all
+  end
+
+  def show
+    @articles = Article.all
   end
 
 end
