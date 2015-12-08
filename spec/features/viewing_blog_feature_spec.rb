@@ -45,7 +45,7 @@ feature 'viewing blog entries' do
       fill_in('Password confirmation', with:'testtest')
       click_button "Sign up"
       click_button "Create New Article"
-      fill_in('article', with: 'This is an Article')
+      fill_in('article_body', with: 'This is an Article')
       click_button 'Save Article'
       articles = Article.all
       expect(articles.count).to eq 1
