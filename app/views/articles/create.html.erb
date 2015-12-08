@@ -1,2 +1,4 @@
-<%= text_area_tag 'article', nil, size:"100x50" %>
-<%= button_to "Save Article", articles_save_path %>
+<%= form_for(:article, url: articles_publish_path) do |f| %>
+<%= f.text_area :body %>
+<%= f.submit %>
+<% end %>

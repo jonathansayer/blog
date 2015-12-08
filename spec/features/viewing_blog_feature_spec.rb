@@ -48,7 +48,7 @@ feature 'viewing blog entries' do
       fill_in('article', with: 'This is an Article')
       click_button 'Save Article'
       articles = Article.all
-      expect(article.count).to eq 1
+      expect(articles.count).to eq 1
     end
 
   end
