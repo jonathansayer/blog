@@ -49,6 +49,21 @@ feature 'viewing blog entries' do
       articles = Article.all
       expect(articles.count).to eq 1
     end
+  end
 
+  context 'when publishing an article' do
+
+    scenario 'publishing a saved article' do
+      visit '/admins/sign_up'
+      fill_in('Email',with: "test@test.com")
+      fill_in('Password',with: 'testtest')
+      fill_in('Password confirmation', with:'testtest')
+      click_button "Sign up"
+      click_button "Create New Article"
+      fill_in('article_body', with: 'This is an Article')
+      click_button 'Save Article'
+      click_button "Publish Article"
+      expect(page).to have_content "'This is an Article"
+    end
   end
 end
