@@ -25,12 +25,16 @@ feature 'viewing blog entries' do
   end
 
   context 'when making an entry' do
-    scenario 'writing an entry' do
+
+    before(:each) do
       visit '/admins/sign_up'
       fill_in('Email',with: "test@test.com")
       fill_in('Password',with: 'testtest')
       fill_in('Password confirmation', with:'testtest')
       click_button "Sign up"
+    end
+
+    scenario 'writing an entry' do
       expect(current_path).to eq '/'
       expect(page).to_not have_css("textarea")
       click_button "Create New Article"
@@ -39,11 +43,6 @@ feature 'viewing blog entries' do
     end
 
     scenario 'saving an entry' do
-      visit '/admins/sign_up'
-      fill_in('Email',with: "test@test.com")
-      fill_in('Password',with: 'testtest')
-      fill_in('Password confirmation', with:'testtest')
-      click_button "Sign up"
       click_button "Create New Article"
       fill_in('article_body', with: 'This is an Article')
       click_button 'Save Article'
