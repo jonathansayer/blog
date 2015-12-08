@@ -1,4 +1,6 @@
 <%= form_for(:article, url: articles_save_path) do |f| %>
+<%= f.label :Title %>
+<%= f.text_field :title %>
 <%= f.text_area :body %>
 <%= f.submit %>
 <% end %>

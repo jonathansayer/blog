@@ -42,6 +42,11 @@ feature 'viewing blog entries' do
       expect(page).to have_css("textarea")
     end
 
+    scenario 'entering a title' do
+      click_button "Create New Article"
+      expect(page).to have_css("input#article_title")
+    end
+
     scenario 'saving an entry' do
       click_button "Create New Article"
       fill_in('article_body', with: 'This is an Article')

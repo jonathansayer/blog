@@ -1,4 +1,4 @@
-<%= @articles.each do |a| %>
+<% @articles.each do |a| %>
 <%= a.body %>
 <%= button_to "Publish Article", articles_show_path %>
 <% end %>
