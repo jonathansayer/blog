@@ -49,6 +49,7 @@ feature 'viewing blog entries' do
 
     scenario 'saving an entry' do
       click_button "Create New Article"
+      fill_in('article_title', with: 'Test')
       fill_in('article_body', with: 'This is an Article')
       click_button 'Save Article'
       articles = Article.all
@@ -58,6 +59,19 @@ feature 'viewing blog entries' do
 
   context 'when publishing an article' do
 
+    scenario 'viewing unpublished articles' do
+      visit '/admins/sign_up'
+      fill_in('Email',with: "test@test.com")
+      fill_in('Password',with: 'testtest')
+      fill_in('Password confirmation', with:'testtest')
+      click_button "Sign up"
+      click_button "Create New Article"
+      fill_in('article_title', with: 'Test')
+      fill_in('article_body', with: 'This is an Article')
+      click_button 'Save Article'
+      expect(page).to have_content 'Test'
+    end
+
     scenario 'publishing a saved article' do
       visit '/admins/sign_up'
       fill_in('Email',with: "test@test.com")
@@ -65,6 +79,7 @@ feature 'viewing blog entries' do
       fill_in('Password confirmation', with:'testtest')
       click_button "Sign up"
       click_button "Create New Article"
+      fill_in('article_title', with: 'Test')
       fill_in('article_body', with: 'This is an Article')
       click_button 'Save Article'
       click_button "Publish Article"

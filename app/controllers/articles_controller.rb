@@ -11,8 +11,9 @@ class ArticlesController < ApplicationController
   end
 
   def save
+    article_title = params[:article][:title]
     article_body = params[:article][:body]
-    Article.create(body: article_body)
+    Article.create(title:article_title, body: article_body)
     redirect_to articles_publish_path
   end
 
