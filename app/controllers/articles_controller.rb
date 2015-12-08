@@ -22,7 +22,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @articles = Article.all
+    PublishedArticle.create(title: params[:title], body: params[:body])
+    @articles = PublishedArticle.all
   end
 
 end

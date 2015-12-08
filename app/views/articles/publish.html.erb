@@ -1,4 +1,4 @@
 <% @articles.each do |a| %>
 <%= a.title %>
-<%= button_to "Publish Article", articles_show_path, {id: a.title} %>
+<%= button_to "Publish Article", articles_show_path,id: a.title, params: {:title => a.title, :body => a.body} %>
 <% end %>
