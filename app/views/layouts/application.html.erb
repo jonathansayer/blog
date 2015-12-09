@@ -8,7 +8,9 @@
 </head>
 <body>
   <div class="error">
-    No Blog Articles Available
+    <% if @published == nil or @published == [] %>
+      <%= "No Blog Articles Available" %>
+    <% end %>
   </div>
   <% if admin_signed_in? %>
     <%= button_to "Create New Article", articles_new_path %>

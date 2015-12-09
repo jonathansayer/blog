@@ -120,6 +120,6 @@ feature 'viewing blog entries' do
     click_button 'Save Article'
     click_button "Test"
     expect(page).to_not have_content "No Blog Articles Available"
-  end 
+  end
 
 end
