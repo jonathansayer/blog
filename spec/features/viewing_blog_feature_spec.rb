@@ -15,11 +15,7 @@ feature 'viewing blog entries' do
     end
 
     scenario 'signing in' do
-      visit '/admins/sign_up'
-      fill_in('Email',with: "test@test.com")
-      fill_in('Password',with: 'testtest')
-      fill_in('Password confirmation', with:'testtest')
-      click_button "Sign up"
+      sign_up
       expect(page).to have_button "Create New Article"
     end
   end
@@ -27,11 +23,7 @@ feature 'viewing blog entries' do
   context 'when making an entry' do
 
     before(:each) do
-      visit '/admins/sign_up'
-      fill_in('Email',with: "test@test.com")
-      fill_in('Password',with: 'testtest')
-      fill_in('Password confirmation', with:'testtest')
-      click_button "Sign up"
+      sign_up
     end
 
     scenario 'writing an entry' do
@@ -60,11 +52,7 @@ feature 'viewing blog entries' do
   context 'when publishing an article' do
 
     before(:each) do
-      visit '/admins/sign_up'
-      fill_in('Email',with: "test@test.com")
-      fill_in('Password',with: 'testtest')
-      fill_in('Password confirmation', with:'testtest')
-      click_button "Sign up"
+      sign_up
       click_button "Create New Article"
       fill_in('article_title', with: 'Test')
       fill_in('article_body', with: 'This is an Article')
@@ -96,11 +84,7 @@ feature 'viewing blog entries' do
   context "when articles are published" do
 
     before(:each) do
-      visit '/admins/sign_up'
-      fill_in('Email',with: "test@test.com")
-      fill_in('Password',with: 'testtest')
-      fill_in('Password confirmation', with:'testtest')
-      click_button "Sign up"
+      sign_up
       click_button "Create New Article"
       fill_in('article_title', with: 'Test')
       fill_in('article_body', with: 'This is an Article')
@@ -124,4 +108,11 @@ feature 'viewing blog entries' do
     end
   end
 
+  def sign_up
+    visit '/admins/sign_up'
+    fill_in('Email',with: "test@test.com")
+    fill_in('Password',with: 'testtest')
+    fill_in('Password confirmation', with:'testtest')
+    click_button "Sign up"
+  end
 end
