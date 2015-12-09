@@ -39,4 +39,13 @@ class ArticlesController < ApplicationController
     redirect_to articles_show_path
   end
 
+  def delete
+    title = params[:title]
+    body = params[:body]
+    article_id = Article.find_by(title: title, body: body).id
+    Article.delete(article_id)
+    flash[:notice] = "No Blog Articles Available"
+    redirect_to articles_publish_path
+  end
+
 end

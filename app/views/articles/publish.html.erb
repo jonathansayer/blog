@@ -1,4 +1,5 @@
 <% @articles.each do |a| %>
 <%= a.title %>
 <%= button_to "Publish Article", articles_show_path,id: a.title, params: {:title => a.title, :body => a.body} %>
+<%= button_to "Delete Article", articles_delete_path, id:"delete_" + a.title, params: {:title => a.title, :body => a.body} %>
 <% end %>
