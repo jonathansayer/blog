@@ -27,7 +27,6 @@ class ArticlesController < ApplicationController
     if params[:title] != nil and params[:body] != nil
       PublishedArticle.create(title: params[:title], body: params[:body])
     end
-    flash[:notice] = "No Blog Articles Available" 
     @published = PublishedArticle.all
   end
 
