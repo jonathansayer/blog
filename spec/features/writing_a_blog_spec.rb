@@ -39,3 +39,10 @@ feature 'writing a blog' do
     end
   end
 end
+
+def create_test_article
+  click_button "Create New Article"
+  fill_in('article_title', with: 'Test')
+  fill_in('article_body', with: 'This is an Article')
+  click_button 'Save Article'
+end

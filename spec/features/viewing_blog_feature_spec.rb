@@ -47,7 +47,6 @@ feature 'viewing blog entries' do
       expect(page).to have_content "No Blog Articles Available"
     end
   end
-
 end
 
 
