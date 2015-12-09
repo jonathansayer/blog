@@ -94,6 +94,13 @@ feature 'viewing blog entries' do
       expect(page).to have_content "This is another Article"
       expect(page).to_not have_content "This is an Article"
     end
+
+    scenario "can remove article once published" do
+      click_button "Test"
+      click_button "remove_Test"
+      expect(page).to_not have_content "Test"
+      expect(page).to have_content "No Blog Articles Available"
+    end
   end
 end
 
