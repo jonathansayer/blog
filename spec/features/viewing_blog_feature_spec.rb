@@ -95,7 +95,7 @@ feature 'viewing blog entries' do
 
   context "when articles are published" do
 
-    scenario "when an article is published, the error message should not appear" do
+    before(:each) do
       visit '/admins/sign_up'
       fill_in('Email',with: "test@test.com")
       fill_in('Password',with: 'testtest')
@@ -105,20 +105,14 @@ feature 'viewing blog entries' do
       fill_in('article_title', with: 'Test')
       fill_in('article_body', with: 'This is an Article')
       click_button 'Save Article'
+    end
+
+    scenario "when an article is published, the error message should not appear" do
       click_button "Test"
       expect(page).to_not have_content "No Blog Articles Available"
     end
 
     scenario "publishing individual articles" do
-      visit '/admins/sign_up'
-      fill_in('Email',with: "test@test.com")
-      fill_in('Password',with: 'testtest')
-      fill_in('Password confirmation', with:'testtest')
-      click_button "Sign up"
-      click_button "Create New Article"
-      fill_in('article_title', with: 'Test')
-      fill_in('article_body', with: 'This is an Article')
-      click_button 'Save Article'
       visit '/'
       click_button "Create New Article"
       fill_in('article_title', with: 'Test2')
