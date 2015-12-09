@@ -29,15 +29,14 @@ class ArticlesController < ApplicationController
       article = Article.find_by(title: params[:title], body: params[:body])
       article.update_attribute(:published?, true)
     end
+    flash[:notice] = "No Blog Articles Available"
     @published = Article.where(published?: true)
   end
 
   def remove
-    title = params[:title]
-    body = params[:body]
-    article_id = PublishedArticle.find_by(title: title, body: body).id
-    PublishedArticle.delete(article_id)
-    flash[:notice] = "No Blog Articles Available"
+    title, body = params[:title], params[:body]
+    article = Article.find_by(title: params[:title], body: params[:body])
+    article.update_attribute(:published?, false)
     redirect_to articles_show_path
   end
 

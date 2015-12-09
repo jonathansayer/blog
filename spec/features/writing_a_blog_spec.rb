@@ -37,6 +37,5 @@ feature 'writing a blog' do
       time = Time.now.to_s(:long)
       expect(page).to have_content time
     end
-
   end
 end
