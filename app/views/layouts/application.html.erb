@@ -9,7 +9,7 @@
 <body>
   <div class="error">
     <% if @published == nil or @published == [] %>
-      <%= "No Blog Articles Available" %>
+      <%= flash[:notice] %>
     <% end %>
   </div>
   <% if admin_signed_in? %>

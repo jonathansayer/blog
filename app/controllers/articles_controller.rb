@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 
   def index
     @published = PublishedArticle.all
+    flash[:notice] = "No Blog Articles Available"
     render 'show'
   end
 
@@ -26,6 +27,7 @@ class ArticlesController < ApplicationController
     if params[:title] != nil and params[:body] != nil
       PublishedArticle.create(title: params[:title], body: params[:body])
     end
+    flash[:notice] = "No Blog Articles Available" 
     @published = PublishedArticle.all
   end
 
@@ -34,6 +36,7 @@ class ArticlesController < ApplicationController
     body = params[:body]
     article_id = PublishedArticle.find_by(title: title, body: body).id
     PublishedArticle.delete(article_id)
+    flash[:notice] = "No Blog Articles Available"
     redirect_to articles_show_path
   end
 
