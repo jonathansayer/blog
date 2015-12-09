@@ -95,26 +95,27 @@ feature 'viewing blog entries' do
       expect(page).to_not have_content "This is an Article"
     end
   end
+end
 
-  def sign_up
-    visit '/admins/sign_up'
-    fill_in('Email',with: "test@test.com")
-    fill_in('Password',with: 'testtest')
-    fill_in('Password confirmation', with:'testtest')
-    click_button "Sign up"
-  end
 
-  def create_test_article
-    click_button "Create New Article"
-    fill_in('article_title', with: 'Test')
-    fill_in('article_body', with: 'This is an Article')
-    click_button 'Save Article'
-  end
+def sign_up
+  visit '/admins/sign_up'
+  fill_in('Email',with: "test@test.com")
+  fill_in('Password',with: 'testtest')
+  fill_in('Password confirmation', with:'testtest')
+  click_button "Sign up"
+end
 
-  def create_second_test_article
-    click_button "Create New Article"
-    fill_in('article_title', with: 'Test2')
-    fill_in('article_body', with: 'This is another Article')
-    click_button 'Save Article'
-  end
+def create_test_article
+  click_button "Create New Article"
+  fill_in('article_title', with: 'Test')
+  fill_in('article_body', with: 'This is an Article')
+  click_button 'Save Article'
+end
+
+def create_second_test_article
+  click_button "Create New Article"
+  fill_in('article_title', with: 'Test2')
+  fill_in('article_body', with: 'This is another Article')
+  click_button 'Save Article'
 end
