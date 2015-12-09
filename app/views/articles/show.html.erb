@@ -4,4 +4,5 @@ Title: <%= a.title %>
 </br>
 <%= a.body %>
 </br>
+<%= button_to "Remove Article", articles_remove_path, id: "remove_" + a.title, params: {:title => a.title, :body => a.body} %>
 <% end %>

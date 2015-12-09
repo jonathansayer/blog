@@ -29,4 +29,12 @@ class ArticlesController < ApplicationController
     @published = PublishedArticle.all
   end
 
+  def remove
+    title = params[:title]
+    body = params[:body]
+    article_id = PublishedArticle.find_by(title: title, body: body).id
+    PublishedArticle.delete(article_id)
+    redirect_to articles_show_path
+  end
+
 end
