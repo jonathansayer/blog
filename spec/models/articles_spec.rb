@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-describe Article do 
+describe Article, type: :model do 
 end
