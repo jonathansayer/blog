@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
-    @published = PublishedArticle.all
+    @published = Article.where(published?: true)
     flash[:notice] = "No Blog Articles Available"
     render 'show'
   end
@@ -20,15 +20,16 @@ class ArticlesController < ApplicationController
   end
 
   def publish
-    @published = PublishedArticle.all
+    @published = Article.where(published?: true)
     @articles = Article.all
   end
 
   def show
     if params[:title] != nil and params[:body] != nil
-      PublishedArticle.create(title: params[:title], body: params[:body])
+      article = Article.find_by(title: params[:title], body: params[:body])
+      article.update_attribute(:published?, true)
     end
-    @published = PublishedArticle.all
+    @published = Article.where(published?: true)
   end
 
   def remove
