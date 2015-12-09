@@ -40,10 +40,7 @@ feature 'viewing blog entries' do
     end
 
     scenario 'saving an entry' do
-      click_button "Create New Article"
-      fill_in('article_title', with: 'Test')
-      fill_in('article_body', with: 'This is an Article')
-      click_button 'Save Article'
+      create_test_article
       articles = Article.all
       expect(articles.count).to eq 1
     end
@@ -53,10 +50,7 @@ feature 'viewing blog entries' do
 
     before(:each) do
       sign_up
-      click_button "Create New Article"
-      fill_in('article_title', with: 'Test')
-      fill_in('article_body', with: 'This is an Article')
-      click_button 'Save Article'
+      create_test_article
     end
 
     scenario 'viewing unpublished articles' do
@@ -85,10 +79,7 @@ feature 'viewing blog entries' do
 
     before(:each) do
       sign_up
-      click_button "Create New Article"
-      fill_in('article_title', with: 'Test')
-      fill_in('article_body', with: 'This is an Article')
-      click_button 'Save Article'
+      create_test_article
     end
 
     scenario "when an article is published, the error message should not appear" do
@@ -114,5 +105,12 @@ feature 'viewing blog entries' do
     fill_in('Password',with: 'testtest')
     fill_in('Password confirmation', with:'testtest')
     click_button "Sign up"
+  end
+
+  def create_test_article
+    click_button "Create New Article"
+    fill_in('article_title', with: 'Test')
+    fill_in('article_body', with: 'This is an Article')
+    click_button 'Save Article'
   end
 end
