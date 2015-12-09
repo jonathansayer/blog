@@ -89,10 +89,7 @@ feature 'viewing blog entries' do
 
     scenario "publishing individual articles" do
       visit '/'
-      click_button "Create New Article"
-      fill_in('article_title', with: 'Test2')
-      fill_in('article_body', with: 'This is another Article')
-      click_button 'Save Article'
+      create_second_test_article
       click_button "Test2"
       expect(page).to have_content "This is another Article"
       expect(page).to_not have_content "This is an Article"
@@ -111,6 +108,13 @@ feature 'viewing blog entries' do
     click_button "Create New Article"
     fill_in('article_title', with: 'Test')
     fill_in('article_body', with: 'This is an Article')
+    click_button 'Save Article'
+  end
+
+  def create_second_test_article
+    click_button "Create New Article"
+    fill_in('article_title', with: 'Test2')
+    fill_in('article_body', with: 'This is another Article')
     click_button 'Save Article'
   end
 end
