@@ -107,4 +107,5 @@ feature 'viewing blog entries' do
     expect(page).to have_content "This is another Article"
     expect(page).to_not have_content "This is an Article"
   end
+
 end

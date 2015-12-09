@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
 
   def index
+    @published = PublishedArticle.all
+    render 'show'
   end
 
   def new
@@ -22,7 +24,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    PublishedArticle.create(title: params[:title], body: params[:body])
+    if params[:title] != nil and params[:body] != nil
+      PublishedArticle.create(title: params[:title], body: params[:body])
+    end
     @published = PublishedArticle.all
   end
 

@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div class="error">
+    No Blog Articles Available
+  </div>
+  <% if admin_signed_in? %>
+    <%= button_to "Create New Article", articles_new_path %>
+  <% end %>
 <%= yield %>
-
 </body>
 </html>
