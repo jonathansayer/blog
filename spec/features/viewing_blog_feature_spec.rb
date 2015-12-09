@@ -59,7 +59,7 @@ feature 'viewing blog entries' do
 
   context 'when publishing an article' do
 
-    scenario 'viewing unpublished articles' do
+    before(:each) do
       visit '/admins/sign_up'
       fill_in('Email',with: "test@test.com")
       fill_in('Password',with: 'testtest')
@@ -69,23 +69,31 @@ feature 'viewing blog entries' do
       fill_in('article_title', with: 'Test')
       fill_in('article_body', with: 'This is an Article')
       click_button 'Save Article'
+    end
+
+    scenario 'viewing unpublished articles' do
       expect(page).to have_content 'Test'
     end
 
     scenario 'publishing a saved article' do
-      visit '/admins/sign_up'
-      fill_in('Email',with: "test@test.com")
-      fill_in('Password',with: 'testtest')
-      fill_in('Password confirmation', with:'testtest')
-      click_button "Sign up"
-      click_button "Create New Article"
-      fill_in('article_title', with: 'Test')
-      fill_in('article_body', with: 'This is an Article')
-      click_button 'Save Article'
       click_button "Publish Article"
       expect(page).to have_content "Test"
       expect(page).to have_content "This is an Article"
     end
+
+    # scenario 'when writing an article, the button to write and article should not appear' do
+    #   visit '/admins/sign_up'
+    #   fill_in('Email',with: "test@test.com")
+    #   fill_in('Password',with: 'testtest')
+    #   fill_in('Password confirmation', with:'testtest')
+    #   click_button "Sign up"
+    #   visit '/articles_create'
+    #   expect(page).to_not have_button "Create New Article"
+    # end
+
+  end
+
+  context "when articles are published" do
 
     scenario "when an article is published, the error message should not appear" do
       visit '/admins/sign_up'
@@ -100,26 +108,26 @@ feature 'viewing blog entries' do
       click_button "Test"
       expect(page).to_not have_content "No Blog Articles Available"
     end
-  end
 
-  scenario "publishing individual articles" do
-    visit '/admins/sign_up'
-    fill_in('Email',with: "test@test.com")
-    fill_in('Password',with: 'testtest')
-    fill_in('Password confirmation', with:'testtest')
-    click_button "Sign up"
-    click_button "Create New Article"
-    fill_in('article_title', with: 'Test')
-    fill_in('article_body', with: 'This is an Article')
-    click_button 'Save Article'
-    visit '/'
-    click_button "Create New Article"
-    fill_in('article_title', with: 'Test2')
-    fill_in('article_body', with: 'This is another Article')
-    click_button 'Save Article'
-    click_button "Test2"
-    expect(page).to have_content "This is another Article"
-    expect(page).to_not have_content "This is an Article"
+    scenario "publishing individual articles" do
+      visit '/admins/sign_up'
+      fill_in('Email',with: "test@test.com")
+      fill_in('Password',with: 'testtest')
+      fill_in('Password confirmation', with:'testtest')
+      click_button "Sign up"
+      click_button "Create New Article"
+      fill_in('article_title', with: 'Test')
+      fill_in('article_body', with: 'This is an Article')
+      click_button 'Save Article'
+      visit '/'
+      click_button "Create New Article"
+      fill_in('article_title', with: 'Test2')
+      fill_in('article_body', with: 'This is another Article')
+      click_button 'Save Article'
+      click_button "Test2"
+      expect(page).to have_content "This is another Article"
+      expect(page).to_not have_content "This is an Article"
+    end
   end
 
 end
