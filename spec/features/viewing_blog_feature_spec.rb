@@ -108,4 +108,18 @@ feature 'viewing blog entries' do
     expect(page).to_not have_content "This is an Article"
   end
 
+  scenario "when an article is published, the error message should not appear" do
+    visit '/admins/sign_up'
+    fill_in('Email',with: "test@test.com")
+    fill_in('Password',with: 'testtest')
+    fill_in('Password confirmation', with:'testtest')
+    click_button "Sign up"
+    click_button "Create New Article"
+    fill_in('article_title', with: 'Test')
+    fill_in('article_body', with: 'This is an Article')
+    click_button 'Save Article'
+    click_button "Test"
+    expect(page).to_not have_content "No Blog Articles Available"
+  end 
+
 end
