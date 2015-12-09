@@ -31,5 +31,11 @@ feature 'writing a blog' do
       click_button 'delete_Test'
       expect(Article.find_by(title: 'Test')).to eq nil
     end
+
+    scenario 'should show the date that the article was written' do
+      create_test_article
+      time = Time.now.to_s(:long)
+      expect(page).to have_content time
+    end
   end
 end
