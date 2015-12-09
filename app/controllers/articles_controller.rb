@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
   end
 
   def publish
+    @published = PublishedArticle.all
     @articles = Article.all
   end
 
