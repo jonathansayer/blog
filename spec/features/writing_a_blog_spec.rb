@@ -31,16 +31,5 @@ feature 'writing a blog' do
       click_button 'delete_Test'
       expect(Article.find_by(title: 'Test')).to eq nil
     end
-
-    
-    # scenario 'when writing an article, the button to write and article should not appear' do
-    #   visit '/admins/sign_up'
-    #   fill_in('Email',with: "test@test.com")
-    #   fill_in('Password',with: 'testtest')
-    #   fill_in('Password confirmation', with:'testtest')
-    #   click_button "Sign up"
-    #   visit '/articles_create'
-    #   expect(page).to_not have_button "Create New Article"
-    # end
   end
 end
