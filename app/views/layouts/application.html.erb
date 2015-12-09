@@ -7,11 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="error">
-    <% if @published == nil or @published == [] %>
-      <%= flash[:notice] %>
-    <% end %>
-  </div>
+  <%= render 'shared/no_blog_error' %>
   <% if admin_signed_in? %>
     <%= button_to "Create New Article", articles_new_path %>
   <% end %>
