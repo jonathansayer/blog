@@ -26,6 +26,13 @@ feature 'writing a blog' do
       expect(articles.count).to eq 1
     end
 
+    scenario 'should be able to delete saved articles' do
+      create_test_article
+      click_button 'delete_Test'
+      expect(Article.find_by(title: 'Test')).to eq nil
+    end
+
+    
     # scenario 'when writing an article, the button to write and article should not appear' do
     #   visit '/admins/sign_up'
     #   fill_in('Email',with: "test@test.com")
@@ -35,23 +42,5 @@ feature 'writing a blog' do
     #   visit '/articles_create'
     #   expect(page).to_not have_button "Create New Article"
     # end
-  end
-
-  context 'when publishing an article' do
-
-    before(:each) do
-      sign_up
-      create_test_article
-    end
-
-    scenario 'viewing unpublished articles' do
-      expect(page).to have_content 'Test'
-    end
-
-    scenario 'publishing a saved article' do
-      click_button "Publish Article"
-      expect(page).to have_content "Test"
-      expect(page).to have_content "This is an Article"
-    end
   end
 end
