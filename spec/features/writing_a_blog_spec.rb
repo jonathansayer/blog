@@ -39,7 +39,7 @@ feature 'writing a blog' do
     end
   end
 
-  context 'editing an article' do
+  context 'viewing an article before publishing' do
 
     scenario 'there is option to veiw and articel' do
       sign_up
@@ -47,6 +47,17 @@ feature 'writing a blog' do
       expect(current_path).to eq '/articles_publish'
       expect(page).to have_link 'view_Test'
     end
+
+    scenario 'the article is shown in a text box ready for editing' do
+      sign_up
+      create_test_article
+      click_link 'view_Test'
+      article_body = page.find_by_id('article_body')
+      expect(page).to have_css("textarea#article_body")
+      expect(article_body.value).to eq 'This is an Article'
+    end
+
+
   end
 
 end

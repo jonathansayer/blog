@@ -49,7 +49,8 @@ class ArticlesController < ApplicationController
     redirect_to articles_publish_path
   end
 
-  def view
+  def see
+    @article = Article.find_by(title: params[:title], body: params[:body])
   end
 
 end
