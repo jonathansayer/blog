@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    redirect_to root_path if !admin_signed_in? 
   end
 
   def save
