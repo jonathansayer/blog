@@ -57,6 +57,16 @@ feature 'writing a blog' do
       expect(article_body.value).to eq 'This is an Article'
     end
 
+    scenario "an article can be changed" do
+      sign_up
+      create_test_article
+      click_link 'view_Test'
+      fill_in "article_body", with: 'This is another Article'
+      click_button 'Save Article'
+      articles = Article.all
+      expect(articles.count).to eq 1
+      expect(articles.first.body).to eq 'This is another Article'
+    end
 
   end
 

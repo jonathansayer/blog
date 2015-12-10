@@ -1,3 +1,6 @@
 <%= @article.title %>
 </br>
-<%= text_area_tag('article_body', @article.body) %>
+<%= form_for(:article, url: articles_update_path(:id => @article.id, :title => @article.title)) do |a| %>
+<%= a.text_area :body, :placeholder => @article.body, :class => 'article_body' %>
+<%= a.submit 'Save Article' %>
+<% end %>
