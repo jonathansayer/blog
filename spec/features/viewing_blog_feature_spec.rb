@@ -27,7 +27,7 @@ feature 'viewing blog entries' do
       create_test_article
     end
 
-    scenario "when an article is published, the error message should not appear" do
+    scenario "when an article are published, the error message should not appear" do
       click_button "Test"
       expect(page).to_not have_content "No Blog Articles Available"
     end
@@ -44,7 +44,6 @@ feature 'viewing blog entries' do
       click_button "Test"
       click_button "remove_Test"
       expect(page).to_not have_content "Test"
-      expect(page).to have_content "No Blog Articles Available"
     end
   end
 end
