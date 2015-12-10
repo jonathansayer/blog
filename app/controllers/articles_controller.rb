@@ -54,9 +54,9 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    Article.delete(params[:id])
-    article = params[:article]
-    Article.create(title: params[:title],body: article[:body])
+    article = Article.find_by(id:params[:id])
+    article.update_attribute(:title, params[:title])
+    article.update_attribute(:body, params[:article][:body])
     redirect_to articles_publish_path
   end
 
