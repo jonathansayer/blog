@@ -67,7 +67,5 @@ feature 'writing a blog' do
       expect(articles.count).to eq 1
       expect(articles.first.body).to eq 'This is another Article'
     end
-
   end
-
 end
