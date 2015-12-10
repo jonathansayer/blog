@@ -49,4 +49,7 @@ class ArticlesController < ApplicationController
     redirect_to articles_publish_path
   end
 
+  def view
+  end
+
 end

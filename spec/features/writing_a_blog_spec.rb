@@ -45,7 +45,7 @@ feature 'writing a blog' do
       sign_up
       create_test_article
       expect(current_path).to eq '/articles_publish'
-      expect(page).to have_button 'edit_Test'
+      expect(page).to have_link 'view_Test'
     end
   end
 
