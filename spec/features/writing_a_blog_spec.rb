@@ -38,11 +38,15 @@ feature 'writing a blog' do
       expect(page).to have_content time
     end
   end
-end
 
-def create_test_article
-  click_button "Create New Article"
-  fill_in('article_title', with: 'Test')
-  fill_in('article_body', with: 'This is an Article')
-  click_button 'Save Article'
+  context 'editing an article' do
+
+    scenario 'there is option to veiw and articel' do
+      sign_up
+      create_test_article
+      expect(current_path).to eq '/articles_publish'
+      expect(page).to have_button 'edit_Test'
+    end
+  end
+
 end
