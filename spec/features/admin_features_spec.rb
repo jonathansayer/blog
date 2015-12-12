@@ -7,5 +7,10 @@ feature 'admin rights' do
       visit 'articles_create'
       expect(current_path).to eq '/'
     end
+
+    scenario 'visiting publish page redirects to index' do
+      visit 'articles_publish'
+      expect(current_path).to eq '/'
+    end
   end
 end
