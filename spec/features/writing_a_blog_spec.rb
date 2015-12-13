@@ -52,6 +52,7 @@ feature 'writing a blog' do
       sign_up
       create_test_article
       click_link 'view_Test'
+      click_link 'edit_Test'
       article_body = page.find_by_id('article_body')
       expect(page).to have_css("textarea#article_body")
       expect(article_body.value).to eq 'This is an Article'
