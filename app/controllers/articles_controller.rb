@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    redirect_to root_path if !admin_signed_in? 
+    redirect_to root_path if !admin_signed_in?
   end
 
   def save
@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
   end
 
   def publish
+    redirect_to root_path if !admin_signed_in?
     @published = Article.where(published?: true)
     @articles = Article.all
   end
@@ -48,7 +49,7 @@ class ArticlesController < ApplicationController
     redirect_to articles_publish_path
   end
 
-  def edit
+  def display
     @article = Article.find_by(title: params[:title], body: params[:body])
   end
 
