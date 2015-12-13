@@ -31,8 +31,8 @@ class ArticlesController < ApplicationController
   end
 
   def remove
-    title, body = params[:title], params[:body]
-    article = Article.find_by(title: params[:title], body: params[:body])
+    id = params[:id]
+    article = Article.find(id)
     article.update_attribute(:published?, false)
     redirect_to articles_show_path
   end
