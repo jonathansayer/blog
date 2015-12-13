@@ -24,7 +24,10 @@ class ArticlesController < ApplicationController
   end
 
   def publish
-    redirect_to root_path if !admin_signed_in?
+    if !admin_signed_in?
+      redirect_to root_path
+      flash[:error] = "You are not signed in as an administrator"
+    end
     @published = Article.where(published?: true)
     @articles = Article.all
   end
