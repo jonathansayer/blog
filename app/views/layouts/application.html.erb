@@ -10,7 +10,7 @@
   <%= render 'shared/no_blog_error' %>
   <%= render 'shared/not_signed_in_error'%>
   <% if admin_signed_in? %>
-    <%= button_to "Create New Article", articles_new_path %>
+    <%= link_to "Create New Article", articles_create_path %>
   <% end %>
 <%= yield %>
 </body>

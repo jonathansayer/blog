@@ -16,7 +16,7 @@ feature 'viewing blog entries' do
 
     scenario 'signing in' do
       sign_up
-      expect(page).to have_button "Create New Article"
+      expect(page).to have_link "Create New Article"
     end
   end
 
@@ -64,14 +64,14 @@ def sign_up
 end
 
 def create_test_article
-  click_button "Create New Article"
+  click_link "Create New Article"
   fill_in('article_title', with: 'Test')
   fill_in('article_body', with: 'This is an Article')
   click_button 'Save Article'
 end
 
 def create_second_test_article
-  click_button "Create New Article"
+  click_link "Create New Article"
   fill_in('article_title', with: 'Test2')
   fill_in('article_body', with: 'This is another Article')
   click_button 'Save Article'

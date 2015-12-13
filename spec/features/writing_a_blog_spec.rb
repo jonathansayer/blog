@@ -10,13 +10,13 @@ feature 'writing a blog' do
     scenario 'writing an entry' do
       expect(current_path).to eq '/'
       expect(page).to_not have_css("textarea")
-      click_button "Create New Article"
+      click_link "Create New Article"
       expect(current_path).to eq '/articles_create'
       expect(page).to have_css("textarea")
     end
 
     scenario 'entering a title' do
-      click_button "Create New Article"
+      click_link "Create New Article"
       expect(page).to have_css("input#article_title")
     end
 
