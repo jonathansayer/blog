@@ -12,7 +12,6 @@ module ArticlesHelper
       flash[:notice] = "No Blog Articles Available"
       return true
     end
-    false
   end
 
 end
