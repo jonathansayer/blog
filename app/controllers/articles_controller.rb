@@ -7,10 +7,6 @@ class ArticlesController < ApplicationController
     render 'show'
   end
 
-  def new
-    redirect_to articles_create_path
-  end
-
   def create
     check_if_signed_in
   end

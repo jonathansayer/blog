@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :admins
   get 'articles' => 'articles#index'
-  post 'articles_new' => 'articles#new'
   get 'articles_create' => 'articles#create'
   post 'articles_save' => 'articles#save'
   get 'articles_publish' => 'articles#publish'
