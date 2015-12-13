@@ -38,8 +38,8 @@ class ArticlesController < ApplicationController
   end
 
   def delete
-    title, body = params[:title], params[:body]
-    article_id = Article.find_by(title: title, body: body).id
+    id = params[:id]
+    article_id = Article.find(id)
     Article.delete(article_id)
     redirect_to articles_publish_path
   end
