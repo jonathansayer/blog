@@ -38,8 +38,7 @@ class ArticlesController < ApplicationController
   end
 
   def delete
-    id = params[:id]
-    article_id = Article.find(id)
+    article_id = Article.find(params[:id])
     Article.delete(article_id)
     redirect_to articles_publish_path
   end
