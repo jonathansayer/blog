@@ -5,5 +5,5 @@
 <%= "Created: " +  a.created_at.to_s(:long) %>
 <%= button_to "Publish Article", articles_show_path,id: a.title, params: {:title => a.title, :body => a.body} %>
 <%= button_to "Delete Article", articles_delete_path, id:"delete_" + a.title, params: {:title => a.title, :body => a.body} %>
-<%= link_to "View Article", articles_display_path(:title => a.title, :body => a.body), id:"view_" + a.title %>
+<%= link_to "View Article", articles_display_path(:id => a.id), id:"view_" + a.title %>
 <% end %>

@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
   end
 
   def display
-    @article = Article.find_by(title: params[:title], body: params[:body])
+    @article = Article.find(params[:id])
   end
 
   def edit
