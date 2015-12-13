@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
 
   def index
     @published = Article.where(published?: true)
-    flash[:notice] = "No Blog Articles Available"
     render 'show'
   end
 
@@ -42,7 +41,6 @@ class ArticlesController < ApplicationController
     title, body = params[:title], params[:body]
     article_id = Article.find_by(title: title, body: body).id
     Article.delete(article_id)
-    flash[:notice] = "No Blog Articles Available"
     redirect_to articles_publish_path
   end
 

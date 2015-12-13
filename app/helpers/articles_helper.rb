@@ -6,4 +6,13 @@ module ArticlesHelper
       flash[:error] = "You are not signed in as an administrator"
     end
   end
+
+  def any_published_articles?
+    if Article.where(published?: true).count == 0
+      flash[:notice] = "No Blog Articles Available"
+      return true
+    end
+    false
+  end
+
 end
