@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include ArticlesHelper
 
   def index
     @published = Article.where(published?: true)
@@ -11,10 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    if !admin_signed_in?
-      redirect_to root_path
-      flash[:error] = "You are not signed in as an administrator"
-    end
+    check_if_signed_in
   end
 
   def save
@@ -24,10 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def publish
-    if !admin_signed_in?
-      redirect_to root_path
-      flash[:error] = "You are not signed in as an administrator"
-    end
+    check_if_signed_in
     @published = Article.where(published?: true)
     @articles = Article.all
   end
