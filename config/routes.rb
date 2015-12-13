@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'articles_remove' => 'articles#remove'
   post 'articles_delete' => 'articles#delete'
   get 'articles_display' => 'articles#display'
+  get 'articles_edit' => 'articles#edit'
   post 'articles_update' => 'articles#update'
   root to:'articles#index'
   # The priority is based upon order of creation: first created -> highest priority.

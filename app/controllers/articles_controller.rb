@@ -53,6 +53,10 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(title: params[:title], body: params[:body])
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def update
     article = Article.find_by(id:params[:id])
     article.update_attribute(:title, params[:title])

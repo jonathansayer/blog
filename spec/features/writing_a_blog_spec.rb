@@ -61,6 +61,7 @@ feature 'writing a blog' do
       sign_up
       create_test_article
       click_link 'view_Test'
+      click_link 'edit_Test'
       fill_in "article_body", with: 'This is another Article'
       click_button 'Save Article'
       articles = Article.all
