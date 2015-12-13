@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 
   def show
     if params[:title] != nil and params[:body] != nil
-      article = Article.find_by(title: params[:title], body: params[:body])
+      article = Article.find(params[:id])
       article.update_attribute(:published?, true)
     end
     @published = Article.where(published?: true)
