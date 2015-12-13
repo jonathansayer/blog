@@ -45,6 +45,12 @@ feature 'viewing blog entries' do
       click_button "remove_Test"
       expect(page).to_not have_content "Test"
     end
+
+    scenario "when an article in published, the no article not on the index page disappears" do
+      click_button "Test"
+      visit '/'
+      expect(page).to_not have_content "No Blog Articles Available"
+    end
   end
 end
 
