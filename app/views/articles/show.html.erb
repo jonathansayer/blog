@@ -1,4 +1,3 @@
-lines (52 sloc)  1.78 KB
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +13,6 @@ lines (52 sloc)  1.78 KB
     <%= stylesheet_link_tag "articles.scss", media: "all" %>
   </head>
   <body>
-
     <% @published.each do |a| %>
     </br>
     Title: <%= a.title %>
@@ -24,3 +22,4 @@ lines (52 sloc)  1.78 KB
     <%= button_to "Remove Article", articles_remove_path, id: "remove_" + a.title, params: {:id => a.id} %>
     <% end %>
   </body>
+</html>
