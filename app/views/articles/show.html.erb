@@ -1,8 +1,26 @@
-<% @published.each do |a| %>
-</br>
-Title: <%= a.title %>
-</br>
-<%= a.body %>
-</br>
-<%= button_to "Remove Article", articles_remove_path, id: "remove_" + a.title, params: {:id => a.id} %>
-<% end %>
+lines (52 sloc)  1.78 KB
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Articles</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag "articles.scss", media: "all" %>
+  </head>
+  <body>
+
+    <% @published.each do |a| %>
+    </br>
+    Title: <%= a.title %>
+    </br>
+    <%= a.body %>
+    </br>
+    <%= button_to "Remove Article", articles_remove_path, id: "remove_" + a.title, params: {:id => a.id} %>
+    <% end %>
+  </body>
