@@ -13,7 +13,7 @@
 <body>
   <%= @article.title %>
   </br>
-  <%= @article.body %>
+  <%= @article.body.html_safe %>
   </br>
   <%= link_to 'Edit Article', articles_edit_path(id: @article.id), id: "edit_" + @article.title %>
 </body>
