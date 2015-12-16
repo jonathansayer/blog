@@ -1,21 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create Articles</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<head>
-  <title>Create Articles</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <%= stylesheet_link_tag "application", media: "all" %>
-  <%= stylesheet_link_tag "articles.scss", media: "all" %>
-</head>
-<body>
-  <%= form_for(:article, url: articles_save_path) do |f| %>
-  <%= f.label :Title %>
-  <%= f.text_field :title %>
-  <%= f.text_area :body %>
-  <%= f.submit %>
-  <% end %>
-</body>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag "articles.scss", media: "all" %>
+  </head>
+  <body>
+    <%= form_for(:article, url: articles_save_path) do |f| %>
+    <%= f.label :Title %>
+    <%= f.text_field :title %>
+    <%= f.text_area :body %>
+    <%= f.submit %>
+    <% end %>
+  </body>
+</html>
