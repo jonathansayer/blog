@@ -17,7 +17,7 @@
     </br>
     Title: <%= a.title %>
     </br>
-    <%= a.body %>
+    <%= a.body.html_safe %>
     </br>
     <%= button_to "Remove Article", articles_remove_path, id: "remove_" + a.title, params: {:id => a.id} %>
     <% end %>
