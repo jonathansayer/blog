@@ -51,6 +51,17 @@ feature 'viewing blog entries' do
       visit '/'
       expect(page).to_not have_content "No Blog Articles Available"
     end
+
+    scenario "when an article is changed the updated data and time is shown" do
+      visit '/articles_publish'
+      click_link "view_Test"
+      click_link "edit_Test"
+      fill_in('article_body', with: 'This is a changed Article')
+      time = Time.now.strftime("%m-%d-%Y")
+      click_button "Save Article"
+      expect(current_path).to eq '/articles_publish'
+      expect(page).to have_content "Updated: " + time
+    end
   end
 end
 
