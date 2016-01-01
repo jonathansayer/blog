@@ -54,4 +54,11 @@ context 'when publishing an article' do
     expect(page).to have_content "Updated: " + time
   end
 
+  scenario 'if published, articles will only show updated values if they have been edited' do
+    time = Time.now.to_s(:long)
+    click_button "Test"
+    expect(current_path).to eq '/articles_show'
+    expect(page).to_not have_content "Updated: " + time
+  end
+
 end
