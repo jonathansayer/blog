@@ -57,7 +57,7 @@ feature 'viewing blog entries' do
       click_link "view_Test"
       click_link "edit_Test"
       fill_in('article_body', with: 'This is a changed Article')
-      time = Time.now.strftime("%m-%d-%Y")
+      time = Time.now.to_s(:long)
       click_button "Save Article"
       expect(current_path).to eq '/articles_publish'
       expect(page).to have_content "Updated: " + time
