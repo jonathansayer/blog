@@ -12,7 +12,9 @@
     </br>
     Created: <%= a.created_at.to_s(:long) %>
     </br>
-    Updated: <%= a.updated_at.to_s(:long) %>
+    <% if a.updated_at != a.created_at and a.updated_at.to_s(:long) != a.created_at.to_s(:long) %>
+      <%= "Updated: " + a.updated_at.to_s(:long) %>
+    <% end %>
     </br>
     <%= a.body.html_safe %>
     </br>
