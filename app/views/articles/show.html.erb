@@ -10,6 +10,8 @@
     </br>
     Title: <%= a.title %>
     </br>
+    Created: <%= a.created_at.to_s(:long) %> 
+    </br>
     <%= a.body.html_safe %>
     </br>
     <%= button_to "Remove Article", articles_remove_path, id: "remove_" + a.title, params: {:id => a.id} %>

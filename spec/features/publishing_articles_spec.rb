@@ -35,4 +35,11 @@ context 'when publishing an article' do
     expect(published.count).to eq 0
     expect(articles.count).to eq 1
   end
+
+  scenario 'published articles have a created at value' do
+    click_button "Test"
+    expect(current_path).to eq '/articles_show'
+    time = Time.now.to_s(:long)
+    expect(page).to have_content "Created: " + time
+  end
 end
