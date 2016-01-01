@@ -42,18 +42,7 @@ context 'when publishing an article' do
     time = Time.now.to_s(:long)
     expect(page).to have_content "Created: " + time
   end
-
-  scenario 'if publshed articles have been edited, an updated time is shown' do
-    click_link "view_Test"
-    click_link "edit_Test"
-    fill_in "article_body", with: "This is a edited article"
-    time = Time.now.to_s(:long)
-    click_button "Save Article"
-    click_button "Test"
-    expect(current_path).to eq "/articles_show"
-    expect(page).to have_content "Updated: " + time
-  end
-
+  
   scenario 'if published, articles will only show updated values if they have been edited' do
     time = Time.now.to_s(:long)
     click_button "Test"
