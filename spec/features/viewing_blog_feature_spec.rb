@@ -62,6 +62,12 @@ feature 'viewing blog entries' do
       expect(current_path).to eq '/articles_publish'
       expect(page).to have_content "Updated: " + time
     end
+
+    scenario "an updated at value is not shown when an article has not been edited" do
+      time = Time.now.to_s(:long)
+      visit '/articles_publish'
+      expect(page).to_not have_content "Updated: " + time
+    end
   end
 end
 
