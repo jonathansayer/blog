@@ -42,7 +42,7 @@ context 'when publishing an article' do
     time = Time.now.to_s(:long)
     expect(page).to have_content "Created: " + time
   end
-  
+
   scenario 'if published, articles will only show updated values if they have been edited' do
     time = Time.now.to_s(:long)
     click_button "Test"
